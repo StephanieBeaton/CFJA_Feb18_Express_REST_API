@@ -24,21 +24,26 @@ app.set('appSecret', process.env.SECRET || 'changethischangethis!');
 // if use() does not have a path for the first arg
 // ... then the function executes for every request
 // ... sent to the app
+console.log("calling app.use(passport.initialize()) from server.js");
 app.use(passport.initialize());
 
 // associate a path prefix 'basic'
 // ... with a constructor to create new BasicStrategy
+console.log("calling passport_strat from server.js");
 require('./lib/passport_strat')(passport);
 
 // create an express Router
 // create an express Router
+console.log("in server.js creating platypusRouter");
 var platypusRouter = express.Router();
+console.log("in server.js creating userRouter");
 var userRouter = express.Router();
 
 // associate pairs of paths and verbs
 // with callback functions (actions)
 // ... (paths for "platypus" resource and
 // ...  one of post, get, put, delete http verbs)
+console.log("calling platypusRoutes() from server.js");
 platypusRoutes(platypusRouter, app.get('appSecret'));
 
 // do the similar as above except for "user" resource
@@ -46,6 +51,7 @@ platypusRoutes(platypusRouter, app.get('appSecret'));
 // with callback functions (actions)
 // ... (paths for "user" resource and
 // ...  one of post, get http verbs)
+console.log("calling userRoutes() from server.js");
 userRoutes(userRouter, passport, app.get('appSecret'));
 
 // the function passed into use() as the second argument
@@ -59,9 +65,12 @@ userRoutes(userRouter, passport, app.get('appSecret'));
 // ... next platypusRouter() is executed
 // ... next userRouter() is executed
 //  (don't think the order of the last two is important at all)
-app.use('/api/v1', platypusRouter);
+console.log("in server.js calling app.use(userRouter)");
 app.use('/api/v1', userRouter);
+console.log("in server.js calling app.use(platypusRouter)");
+app.use('/api/v1', platypusRouter);
 
+console.log("in server.js starting webserver by calling app.listen()");
 // start up the app to listen for incoming requests on PORT environment variable OR  3000
 app.listen(process.env.PORT || 3000, function() {
   console.log('server listening on port ' + (process.env.PORT || 3000));

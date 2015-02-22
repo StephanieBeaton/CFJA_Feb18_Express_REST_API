@@ -17,7 +17,11 @@ var userSchema = new mongoose.Schema({
 // '/create_user'
 // called when new user wants to create a new account for the website
 userSchema.methods.generateHash = function(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  console.log("in User.js   generateHash()");
+  console.log("password = " + password);
+  var hashedPassword =  bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  console.log("hashed password = " + hashedPassword);
+  return hashedPassword;
 };
 
 // '/sign-in'
@@ -26,12 +30,17 @@ userSchema.methods.validPassword = function(password) {
   console.log("in User.js validPassword");
   console.log("password passed in = " + password);
   console.log("this.basic.password = " + this.basic.password);
-  return bcrypt.compareSync(password, this.basic.password);
+  var compareSyncResult =  bcrypt.compareSync(password, this.basic.password);
+  return compareSyncResult;
 };
 
 // '/sign-in'
 // called whenever existing user logs in
 userSchema.methods.generateToken = function(appSecret, callback) {
+  console.log("in User.js generateToken()");
+  console.log("this.id = " + this.id);
+  console.log("appSecret = " + appSecret);
+  console.log("callback = " + callback);
   eat.encode({id: this._id, timestamp: new Date()}, appSecret, callback);
 };
 

@@ -58,3 +58,47 @@ superagent localhost:3000/api/v1/sign_in -u daffy@example.com:daffy123
 
 superagent localhost:3000/api/v1/sign_in -u daffy@example:daffy123
 
+superagent localhost:3000/api/v1/sign_in -u donaldduck@example.com:donaldduck123
+
+"donaldduck@example.com", "password": "donaldduck123"}
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "pluto@example.com", "password": "pluto123"}, "username": "pluto"}'
+
+{ eat: 'ZCWlSpOAl/X/vUJtns7+avHdHeKhf+9fNGx8v6DoaHcXfGKrhwGM6wKGOKv0+kddW5kFtcYddFgz/DLJTNzUyI/GQzxiiU+A' }
+
+superagent http://localhost:3000/api/v1/platypus get { eat: "ZCWlSpOAl/X/vUJtns7+avHdHeKhf+9fNGx8v6DoaHcXfGKrhwGM6wKGOKv0+kddW5kFtcYddFgz/DLJTNzUyI/GQzxiiU+A"}
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "sleepy@example.com", "password": "sleepy123"}, "username": "sleepy"}'
+
+{ eat: 'UP9zCfzmaYNchuYvFyix6FPO2kopNZL3vmUCpugtOZmUw+bB7Xt0fcm1ON+bdfCgn1yIFgTiAK2HHUyNcF18I++n8Aay/+uQ' }
+
+superagent http://localhost:3000/api/v1/platypus get { eat: "UP9zCfzmaYNchuYvFyix6FPO2kopNZL3vmUCpugtOZmUw+bB7Xt0fcm1ON+bdfCgn1yIFgTiAK2HHUyNcF18I++n8Aay/+uQ"}
+
+//sign_in
+superagent http://localhost:3000/api/v1/sign_in
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test2@example.com", "password": "test123"}, "username": "test2"}'
+
+{ eat: 'oLRaFNuU/m1G6zoK9wYrfOW4UenSLHkKS8R1yxv4aIzlhwZ6pfY1XOz+pmOmQwR6zSVq9sowTHBMkOGeJJI/h17BDK9IC2J0' }
+
+/ get platypuses
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "oLRaFNuU/m1G6zoK9wYrfOW4UenSLHkKS8R1yxv4aIzlhwZ6pfY1XOz+pmOmQwR6zSVq9sowTHBMkOGeJJI/h17BDK9IC2J0" }'
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test3@example.com", "password": "test123"}, "username": "test3"}'
+
+{ eat: 'If30m24O/VEimazRGzokiGkEqaUvzsIIn+38F+eWc5BGf89GIIDwJ77uElg5GoHihPhT62/dtmFh5hn3btwbocVbl4ohnFbS' }
+
+/ get platypuses
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "If30m24O/VEimazRGzokiGkEqaUvzsIIn+38F+eWc5BGf89GIIDwJ77uElg5GoHihPhT62/dtmFh5hn3btwbocVbl4ohnFbS" }'
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test4@example.com", "password": "test123"}, "username": "test4"}'
+
+{ eat: 'esHtiltkngsCuEb9XO4eLCT04BAM2JAvwHcvI0lRXubxfGpuR4y5y+zNhrqzbNbhv/iNqpP0N2deSQFNwBXFqedu+oZVcmeu' }
+
+/ get platypuses
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "esHtiltkngsCuEb9XO4eLCT04BAM2JAvwHcvI0lRXubxfGpuR4y5y+zNhrqzbNbhv/iNqpP0N2deSQFNwBXFqedu+oZVcmeu" }'

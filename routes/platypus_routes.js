@@ -7,12 +7,15 @@ var eat_auth = require('../lib/eat_auth');
 var bodyparser = require('body-parser');
 
 module.exports = function(app, appSecret) {
+  console.log("in platypus_routes.js");
   app.use(bodyparser.json());      // turns the req.body into an object
 
+  console.log("in platypus_routes.js about to call app.get('/platypus')");
   // request to get all the platypuses from the database
   app.get('/platypus', eat_auth(appSecret), function(req, res) {
     // .save() is mongoose static method on the "class" Platypus
 
+    console.log("in platypus_routes.js about to call Platypus.find()");
     // We haven't added  "user_id" field to  models/Platypus.js  yet
     // Platypus.find({user_id: req.user._id}, function(err, data) {
     Platypus.find({}, eat_auth(appSecret), function(err, data) {
