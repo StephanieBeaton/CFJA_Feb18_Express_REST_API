@@ -1,6 +1,6 @@
 
 // POST
-superagent localhost:3000/api/v1/platypus post '{ "platypusName": "Sam", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
+superagent http://localhost:3000/api/v1/platypus post '{ "platypusName": "Sally", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
 
 //GET
 superagent localhost:3000/api/v1/platypus
@@ -10,3 +10,40 @@ superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f put '{ "platy
 
 //DELETE
 superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f delete
+
+// create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test@example.com", "password": "foobar123"}, "username": "Test"}'
+
+// /sign-in  user
+
+
+// GET  platypuses  with token returned from create user or  sign-in
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "MRk0afXirbOyV2x7JY5tzexz+fymSvQ2+VuqpXSj9LXk5ssfR2xq3entR+fDKux6Zjnrkd6cCjK8EqdNMXoVdPPoOLvL9vuA" }'
+
+// create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "pinochio@example.com", "password": "pinochio123"}, "username": "Pinochio"}'
+
+// GET  platypuses  with token returned from create user or  sign-in
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "1Dsu6/1jkFgX5uu+3XYKIHJljKV6QR48qsAUU/fGaqZQG7wQbKbDtmolm2TKJP4DGOaX6fQ7Sv4M5m5bsRS75gN4mivoQ1EM" }'
+
+//create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "pinochio@example.com", "password": "pinochio123"}, "username": "Pinochio"}'
+
+// GET  platypuses  with token returned from create user or  sign-in
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "Hyjcxg8Mi7bHbC3hi36ZDdB0KEvnTyNR4ejbUr6e7u9fBIxmqLyzdsJSowgQnwGWEILQmBNiPLW7KQGkG15bWRE3PcpsljBm" }'
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "cinderella@example.com", "password": "cinderella123"}, "username": "Cinderella"}'
+
+// GET  platypuses  with token returned from create user or  sign-in
+superagent http://localhost:3000/api/v1/platypus get '{ "eat": "VEWwxTx5eT/73PcOIdN2g0goMg5IB0jhgnDZmF0uniIAXVNRIqQxlDgJ0HUY5FX7l+XmW1k+YbzHWC1j23r936P1+1eyUEuU" }'
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "daffy@example.com", "password": "daffy123"}, "username": "Daffy"}'
+
+superagent http://localhost:3000/api/v1/platypus get "KtTKLbDRy3LVEZDT7mJMVbk/tBvqwSw2L4Nl2Z2K7yw7VqTT1ZAhKRs2WVr8bEAVDdikK+8JX1tQSaE2coie8flCgJiLn3tp"
+
+{ eat: 'KtTKLbDRy3LVEZDT7mJMVbk/tBvqwSw2L4Nl2Z2K7yw7VqTT1ZAhKRs2WVr8bEAVDdikK+8JX1tQSaE2coie8flCgJiLn3tp' }
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "donaldduck@example.com", "password": "donaldduck123"}, "username": "donaldduck"}'
