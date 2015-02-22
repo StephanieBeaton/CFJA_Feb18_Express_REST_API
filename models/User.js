@@ -23,6 +23,9 @@ userSchema.methods.generateHash = function(password) {
 // '/sign-in'
 // called whenever existing user logs in
 userSchema.methods.validPassword = function(password) {
+  console.log("in User.js validPassword");
+  console.log("password passed in = " + password);
+  console.log("this.basic.password = " + this.basic.password);
   return bcrypt.compareSync(password, this.basic.password);
 };
 

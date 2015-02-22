@@ -47,3 +47,14 @@ superagent http://localhost:3000/api/v1/platypus get "KtTKLbDRy3LVEZDT7mJMVbk/tB
 
 /create user
 superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "donaldduck@example.com", "password": "donaldduck123"}, "username": "donaldduck"}'
+
+{ eat: 'b1rhbpbNeRXXXPz/xy3M7XX63AydrSjHTyt/9rVCLXO/FvLdv+SIOEeDJISyUCNkrZ8fGXURbMFaAhj6nB+Sv+bsMWORy718' }
+
+superagent http://localhost:3000/api/v1/platypus get "KtTKLbDRy3LVEZDT7mJMVbk/tBvqwSw2L4Nl2Z2K7yw7VqTT1ZAhKRs2WVr8bEAVDdikK+8JX1tQSaE2coie8flCgJiLn3tp"
+
+
+// sign on as daffy
+superagent localhost:3000/api/v1/sign_in -u daffy@example.com:daffy123
+
+superagent localhost:3000/api/v1/sign_in -u daffy@example:daffy123
+
