@@ -62,7 +62,7 @@ module.exports = function(app, passport, appSecret) {
   // user sends email address and password in request
   app.get('/sign_in', passport.authenticate('basic', {session: false}), function(req, res) {
 
-    console.log("in user_routes.js  app.get()");
+    console.log("in user_routes.js  app.get('/sign_in')");
     // every time the user logs in, the system creates a token (for that session -- even though we don't have sessions)
     req.user.generateToken(appSecret, function(err, token) {
       // failed to generate token
