@@ -36,19 +36,31 @@ module.exports = function(app, appSecret) {
 
   // request to insert new platypus in the database
   app.post('/platypus', eat_auth(appSecret), function(req, res) {
+    console.log('in platypus_routes.js  app.post()');
+    console.log('req.body');
+    console.log(req.body);
+
+    console.log('about to call new Platypus()');
     var newPlatypus = new Platypus(req.body);
     // mongoose method .save()
     newPlatypus.save(function(err, platypus) {
+
+      console.log('in newPlatypus.save()');
       // attempt to insert new platypus failed
-      if (err) return res.status(500).send({'msg': 'could not save platypus'});
+      if (err) {
+        console.log("database err = " + err);
+        return res.status(500).send({'msg': 'could not save platypus'});
+      }
 
       // success - return platypus to client  (including _id field)
+      console.log("successfuly saved new Platypus");
+      console.log(platypus);
       res.json(platypus);
     });
   });
 
   // request to replace a platypus in the database with another platypus
-  app.put('/platypus/:id', function(req, res) {
+  app.put('/platypus/:id', eat_auth(appSecret), function(req, res) {
     var updatedPlatypus = req.body;
     // this is same as setting updatedPlatypus._id = null
     // ... forces update() to use the same _id when replacing the platypus
@@ -73,7 +85,7 @@ module.exports = function(app, appSecret) {
   // });
 
   // request a delete of a platypus
-  app.delete('/platypus/:id', function(req, res) {
+  app.delete('/platypus/:id', eat_auth(appSecret), function(req, res) {
     var deletedPlatypus = req.body;
     //delete deletedPlatypus._id;
     Platypus.remove({_id: req.params.id}, function(err) {

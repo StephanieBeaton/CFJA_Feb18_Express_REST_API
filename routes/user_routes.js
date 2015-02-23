@@ -28,7 +28,7 @@ module.exports = function(app, passport, appSecret) {
     console.log("newUser.basic.email = " + newUser.basic.email);
 
     // hash the password so that the hash cannot be reversed
-    newUser.basic.password = newUser.generateHash(req.body.password);
+    newUser.basic.password = newUser.generateHash(req.body.basic.password);
 
     console.log("newUser.basic.password = " + newUser.basic.password);
 

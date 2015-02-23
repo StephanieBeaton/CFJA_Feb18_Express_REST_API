@@ -3,7 +3,8 @@
 'use strict';
 
 var mongoose = require('mongoose');       // to read from, write to the database
-var bcrypt   = require('bcrypt-nodejs');  // to encrypt the password
+//var bcrypt   = require('bcrypt-nodejs');  // to encrypt the password
+var bcrypt   = require('bcrypt');  // to encrypt the password
 var eat      = require('eat');            // to encrypt the token
 
 var tempHashedPassword;
@@ -21,7 +22,7 @@ var userSchema = new mongoose.Schema({
 userSchema.methods.generateHash = function(password) {
   console.log("in User.js   generateHash()");
   console.log("password = " + password);
-  var hashedPassword =  bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  var hashedPassword =  bcrypt.hashSync(password, 8);
   tempHashedPassword = hashedPassword;
   console.log("hashed password = " + hashedPassword);
   console.log("tempHashedPassword = " + tempHashedPassword);
@@ -31,9 +32,9 @@ userSchema.methods.generateHash = function(password) {
 // '/sign-in'
 // called whenever existing user logs in
 userSchema.methods.validPassword = function(password) {
-  // console.log("in User.js validPassword()");
-  // console.log("password passed in = " + password);
-  // console.log("this.basic.password = " + this.basic.password);
+  console.log("in User.js validPassword()");
+  console.log("password passed in = " + password);
+  console.log("this.basic.password = " + this.basic.password);
   // var hashedPassword =  bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   // console.log("hashedPassword that was passed into this function = ");
   // console.log(hashedPassword);
