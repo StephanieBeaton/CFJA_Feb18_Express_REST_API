@@ -1,0 +1,4 @@
+# CFJSA_Mar02_Angular_client_for_express_api
+CFJSA_Mar02_Angular_client_for_express_api
+
+An Angular client for my single resource express api
