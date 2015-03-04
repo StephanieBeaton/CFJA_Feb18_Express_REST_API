@@ -1,0 +1,12 @@
+
+// POST
+superagent localhost:3000/api/v1/platypus post '{ "platypusName": "Sam", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
+
+//GET
+superagent localhost:3000/api/v1/platypus
+
+// PUT
+superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f put '{ "platypusName": "Ted", "platypusAge": "21", "platypusPlaceOfBirth": "Perth, Australia"}'
+
+//DELETE
+superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f delete
