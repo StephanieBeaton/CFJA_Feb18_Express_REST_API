@@ -1,8 +1,8 @@
 'use strict';
 
-var greet = require('./greet');
-var $ = require('jquery');
+require('angular/angular');
 
-$('main').append('<p>' + greet() + '</p>');
+var platypusApp = angular.module('platypusApp', []);
 
+require('./platypus/controllers/platypus_controller')(platypusApp);
 
