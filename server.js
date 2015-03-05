@@ -7,6 +7,8 @@ var platypusRoutes = require('./routes/platypus_routes');
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/platypusapp_development');
 
 var app = express();
+app.use(express.static(__dirname + '/build'));
+
 var router = express.Router();
 
 platypusRoutes(router);
