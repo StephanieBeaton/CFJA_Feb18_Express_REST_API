@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig({
     clean: {
@@ -40,8 +41,15 @@ module.exports = function(grunt) {
       options: {
         transform: ['debowerify']
       }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
     }
   });
   grunt.registerTask('build', ['clean', 'browserify', 'copy']);
   grunt.registerTask('build:test', ['browserify:test']);
+  grunt.registerTask('test:client', ['browserify:karmatest', 'karma:unit']);
 };
