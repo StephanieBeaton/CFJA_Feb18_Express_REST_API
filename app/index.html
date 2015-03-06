@@ -7,8 +7,23 @@
 <body data-ng-app="platypusApp">
   <main data-ng-controller="platypusController" data-ng-init="getAll()">
   <h1>Platypuses: </h1>
+    <form name="newPlatypus">
+      <label for="newPlatypus">New Platypus</label>
+      <input type="text" id="newPlatypus" data-ng-model="newPlatypus.platypusName">
+      <button type="submit" data-ng-click="create(newPlatypus)">Save New Platypus</button>
+    </form>
     <ul data-ng-repeat="platypus in platypuses">
-      <li>{{platypus.platypusName}}</li>
+      <li>
+        {{platypus.platypusName}}
+        <form data-ng-if="platypus.editing">
+          <label for="platypus{{platypus._id}}">Edit Platypus</label>
+          <input type="text" id="platypus{{platypus._id}}" data-ng-model="platypus.platypusName">
+          <button type="submit" data-ng-click="save(platypus)">Save Changes</button>
+          <button type="button" data-ng-click="editToggle(platypus)">Cancel</button>
+        </form>
+        <button data-ng-click="editToggle(platypus)" data-ng-if="!platypus.editing">Edit Platypus</button>
+        <button data-ng-click="remove(platypus)">Delete Platypus</button>
+      </li>
     </ul>
   </main>
 
