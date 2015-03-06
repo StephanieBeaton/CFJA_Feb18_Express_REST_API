@@ -1,7 +1,7 @@
 'use strict';
 
 process.env.MONGO_URI = 'mongodb://localhost/platypusapp_test';
-require('../server.js');
+require('../../server.js');
 var mongoose = require('mongoose');
 var chai     = require('chai');
 var chaihttp = require('chai-http');

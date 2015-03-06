@@ -33,6 +33,10 @@ module.exports = function(grunt) {
         src: ['test/client_side/*_test.js'],
         dest: 'test/client_side/test_bundle.js'
       },
+      karmatest: {
+        src: ['test/karma_tests/*_test.js'],
+        dest: 'test/karma_tests/karma_test_bundle.js'
+      },
       options: {
         transform: ['debowerify']
       }
