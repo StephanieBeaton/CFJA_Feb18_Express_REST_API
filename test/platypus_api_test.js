@@ -10,15 +10,31 @@ chai.use(chaihttp);
 var expect = chai.expect;
 
 describe('platypus api end points', function() {
-  before(function(done) {
+
+  after(function(done) {
     mongoose.connection.db.dropDatabase(function() {
       done();
     });
   });
 
-  it('should respond to a post request', function(done) {
+  var token;
+  it('should create a user and create a token', function(done) {
     chai.request('localhost:3000/api/v1')
+    .post('/create_user')
+    .send({basic: {email: 'test25@example', password: 'test123'}, username: 'test25'})
+    .end(function(err, res) {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.body).to.have.property('eat');
+      token = res.body.eat;
+      done();
+    });
+  });
+
+  it('should respond to a post request', function(done) {
+     chai.request('localhost:3000/api/v1')
         .post('/platypus')
+        .set('eat', token)
         .send({platypusName: 'Luke', platypusPlaceOfBirth: 'Adelaide, Australia'})
         .end(function(err, res) {
           expect(err).to.eql(null);
@@ -32,6 +48,7 @@ describe('platypus api end points', function() {
   it('should have a default value', function(done) {
     chai.request('localhost:3000/api/v1')
         .post('/platypus')
+        .set('eat', token)
         .send({platypusAge: '15'})
         .end(function(err, res) {
           expect(err).to.eql(null);
@@ -46,11 +63,13 @@ describe('platypus api end points', function() {
     before(function(done){
       chai.request('localhost:3000/api/v1')
         .post('/platypus')
+        .set('eat', token)
         .send({platypusName: 'Leonardo'})
         .end(function(err, res){
           id = res.body._id;
           chai.request('localhost:3000/api/v1')
             .post('/platypus')
+            .set('eat', token)
             .send({platypusName: 'Dana'})
             .end(function(err, res){
               id2 = res.body._id;
@@ -64,6 +83,7 @@ describe('platypus api end points', function() {
     it('should have an index', function(done) {
       chai.request('localhost:3000/api/v1')
         .get('/platypus')
+        .set('eat', token)
         .end(function(err, res){
           expect(err).to.eql(null);
           expect(Array.isArray(res.body)).to.be.true;
@@ -75,6 +95,7 @@ describe('platypus api end points', function() {
     it('should be able to update a platypus', function(done) {
       chai.request('localhost:3000/api/v1')
         .put('/platypus/' + id)
+        .set('eat', token)
         .send({platypusName: 'Jose'})
         .end(function(err, res) {
           expect(err).to.eql(null);
@@ -86,6 +107,7 @@ describe('platypus api end points', function() {
     it('should be able to delete a platypus', function(done) {
       chai.request('localhost:3000/api/v1')
         .del('/platypus/' + id2)
+        .set('eat', token)
         .end(function(err, res) {
           console.log("delete test id2");
           console.log(id2);

@@ -294,3 +294,63 @@ superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "
 { eat: 'AXb0BYK1l+WRnzWoUwsBQz0cO0/AEJc7PwVRbv5FvZFiu8XPgcNcyyh1UeLzZsasjBlEdUqkKDcZ0BPGN7DFCykl/zbWEzPZ' }
 
 superagent localhost:3000/api/v1/sign_in -u 'test25@example:test123'
+
+
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test19@example.com", "password": "test123"}, "username": "test19"}'
+
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test19@example.com", "password": "test123"}, "username": "test19"}'
+{ eat: 'pdCcZoZD+dOPHGdPw30SgO8abL4/WZO1wLyDxgpIHYkjUW5AxP2Ra3idrJxhhrdLy0K06Wdi/eohIwdRnylLln4XSx9bKTVB' }
+
+// create platypus
+superagent http://localhost:3000/api/v1/platypus post '{ "eat": "pdCcZoZD+dOPHGdPw30SgO8abL4/WZO1wLyDxgpIHYkjUW5AxP2Ra3idrJxhhrdLy0K06Wdi/eohIwdRnylLln4XSx9bKTVB", "platypusName": "Sally", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
+
+{ __v: 0,
+  platypusAge: '35',
+  platypusPlaceOfBirth: 'Sydney, Australia',
+  _id: '54fe5e36e5ef6eff1ce6fe9b',
+  platypusName: 'Sally' }
+
+// update platypus
+superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f put '{ "eat": "pdCcZoZD+dOPHGdPw30SgO8abL4/WZO1wLyDxgpIHYkjUW5AxP2Ra3idrJxhhrdLy0K06Wdi/eohIwdRnylLln4XSx9bKTVB","platypusName": "Ted", "platypusAge": "21", "platypusPlaceOfBirth": "Perth, Australia"}'
+
+{ eat: 'pdCcZoZD+dOPHGdPw30SgO8abL4/WZO1wLyDxgpIHYkjUW5AxP2Ra3idrJxhhrdLy0K06Wdi/eohIwdRnylLln4XSx9bKTVB',
+  platypusName: 'Ted',
+  platypusAge: '21',
+  platypusPlaceOfBirth: 'Perth, Australia' }
+
+
+//GET
+superagent localhost:3000/api/v1/platypus '{ "eat": "pdCcZoZD+dOPHGdPw30SgO8abL4/WZO1wLyDxgpIHYkjUW5AxP2Ra3idrJxhhrdLy0K06Wdi/eohIwdRnylLln4XSx9bKTVB"}'
+
+/create user
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test19@example.com", "password": "test123"}, "username": "test19"}'
+{ eat: 'tJQPmJtvXnr3Dye/m9QVEShQCJToLNjqA1O+9ZxRqpfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIow1R149ZbuIW5T' }
+
+/create platypus
+superagent http://localhost:3000/api/v1/platypus post '{ "eat": "tJQPmJtvXnr3Dye/m9QVEShQCJToLNjqA1O+9ZxRqpfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIow1R149ZbuIW5T", "platypusName": "Sally", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
+
+
+
+superagent http://localhost:3000/api/v1/create_user post '{ "basic": {"email": "test25@example", "password": "test123"}, "username": "test25"}'
+{ eat: 'tJQPmJtvXnr3Dye/mdoXEShQCJToLNjqA1O+9ZxR8ZfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIIw1RN49ZTuIW5T' }
+
+superagent localhost:3000/api/v1/platypus '{ "eat": "tJQPmJtvXnr3Dye/mdoXEShQCJToLNjqA1O+9ZxR8ZfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIIw1RN49ZTuIW5T"}'
+
+superagent http://localhost:3000/api/v1/platypus post '{ "eat": "tJQPmJtvXnr3Dye/mdoXEShQCJToLNjqA1O+9ZxR8ZfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIIw1RN49ZTuIW5T", "platypusName": "Sally", "platypusAge": "35", "platypusPlaceOfBirth": "Sydney, Australia"}'
+
+{ __v: 0,
+  platypusAge: '35',
+  platypusPlaceOfBirth: 'Sydney, Australia',
+  _id: '54fe68e6200616f91f113e5c',
+  platypusName: 'Sally' }
+
+
+54fe68e6200616f91f113e5c
+
+// update platypus
+superagent localhost:3000/api/v1/platypus/54fe68e6200616f91f113e5c put '{ "eat": "tJQPmJtvXnr3Dye/mdoXEShQCJToLNjqA1O+9ZxR8ZfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIIw1RN49ZTuIW5T","platypusName": "Ted", "platypusAge": "21", "platypusPlaceOfBirth": "Perth, Australia"}'
+
+superagent localhost:3000/api/v1/platypus '{ "eat": "tJQPmJtvXnr3Dye/mdoXEShQCJToLNjqA1O+9ZxR8ZfaotDmMW+uX9AXfdNpH0VoCHgusJJhfUXTsUQ3TIIw1RN49ZTuIW5T"}'
+
+// delete platypus
+superagent localhost:3000/api/v1/platypus/54e6340699832ad21f97978f delete
